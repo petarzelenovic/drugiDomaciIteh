@@ -35,8 +35,12 @@ class BrandSeeder extends Seeder
          'name'=>"Balenciaga",
          'slug'=>"balenciaga",
          'category_id'=>Category::all()->random()->id,
-         
- 
      ]);
+
+     Brand::create([
+        'name'=>"Adidas",
+        'slug'=>"adidas",
+        'category_id'=>Category::all()->random()->id,
+    ]);
     }
 }

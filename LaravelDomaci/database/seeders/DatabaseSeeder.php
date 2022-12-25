@@ -3,6 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +20,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::truncate();
+       
+        // Product::factory()->create(); da kreira sve sam
+       
+        $this->call(CategorySeeder::class);
+        $this->call(BrandSeeder::class);
+       
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call(ProductSeeder::class);
+
     }
 }

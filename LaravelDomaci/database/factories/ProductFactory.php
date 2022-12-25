@@ -22,10 +22,10 @@ class ProductFactory extends Factory
             'brand_id'=>Brand::factory(),
             'user_id'=>User::factory(),
             
-            'name'=>$this->faker->string(),
+            'name'=>$this->faker->text(),
             'slug'=>$this->faker->slug(),
             'description'=>$this->faker->text(70),
-            'price'=>$this->faker->integer(),
+            'price'=>$this->faker->numerify(),
         ];
     }
 }
