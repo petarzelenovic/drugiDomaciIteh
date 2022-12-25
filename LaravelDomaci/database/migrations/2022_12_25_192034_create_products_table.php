@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->text('name'); 
             $table->text('description')->nullable();   
-            $table->decimal('price', 10, 2)->nullable(); 
+            $table->decimal('price', 10, 2); 
             $table->text('slug');
 
             $table->foreignId('brand_id');
