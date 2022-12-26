@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -32,4 +33,7 @@ Route::get('/category/{category}', [CategoryController::class,'show']);
 
 
 Route::get('/products', [ProductController::class,'index']);
+
+Route::get('/productsOfBrand/{id}', [BrandProductController::class,'index']);
+
 
