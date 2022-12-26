@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BrandResource;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands=Brand::all();
+        return BrandResource::collection($brands);
     }
 
     /**
@@ -24,7 +26,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        Brand::factory()->create();
     }
 
     /**
@@ -46,7 +48,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+        return new BrandResource($brand);
     }
 
     /**
@@ -78,8 +80,13 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy(Brand $brand_id)
     {
-        //
+        $brand= Brand::find($brand_id);
+        if(is_null($brand)){
+            return response()->json('Brend nije pronadjen',404);
+        }
+        $brand->delete();
+        return response()->json('Brend je obrisan');
     }
 }

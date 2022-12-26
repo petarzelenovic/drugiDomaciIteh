@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       
+        $products=Product::all();
+        return ProductResource::collection($products);
     }
 
     /**
@@ -46,7 +48,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return new ProductResource($product);
     }
 
     /**
@@ -78,8 +80,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product_id)
     {
-        //
+        $pr= Product::find($product_id);
+        if(is_null($pr)){
+            return response()->json('Proizvod nije nadjen',404);
+        }
+        $pr->delete();
+        return response()->json('Proizvod je obrisan');
     }
 }

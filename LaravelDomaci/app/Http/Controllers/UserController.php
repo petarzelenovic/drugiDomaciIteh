@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users=User::all();
+        return UserResource::collection($users);
     }
 
     /**
@@ -24,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        User::factory()->create();
     }
 
     /**
@@ -44,9 +46,13 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($user_id)
     {
-        //
+        $user=User::find($user_id);
+        if(is_null($user)){
+            return response()->json('User nije pronadjen',404);
+        }
+        return response()->json($user);
     }
 
     /**
@@ -78,8 +84,13 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($user_id)
     {
-        //
+        $user= User::find($user_id);
+        if(is_null($user)){
+            return response()->json('User nije pronadjen',404);
+        }
+        $user->delete();
+        return response()->json('User je obrisan');
     }
 }

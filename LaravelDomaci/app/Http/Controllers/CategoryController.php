@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories=Category::all();
+        return CategoryResource::collection($categories);
     }
 
     /**
@@ -46,7 +48,13 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        // $category=Category::find($category_id);
+        // if(is_null($category)){
+        //     return response()->json('Kategorija nije pronadjena',404);
+        // }
+        // return response()->json($category);
+
+        return new CategoryResource($category);
     }
 
     /**
@@ -78,8 +86,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category_id)
     {
-        //
+        $category= Category::find($category_id);
+        if(is_null($category)){
+            return response()->json('Kategorija nije pronadjena',404);
+        }
+        $category->delete();
+        return response()->json('Kategorija je obrisana');
     }
 }
