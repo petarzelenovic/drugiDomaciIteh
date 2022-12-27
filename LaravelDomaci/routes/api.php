@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -35,5 +36,24 @@ Route::get('/category/{category}', [CategoryController::class,'show']);
 Route::get('/products', [ProductController::class,'index']);
 
 Route::get('/productsOfBrand/{id}', [BrandProductController::class,'index']);
+
+Route::delete('/category/{id}', [CategoryController::class, 'destroy']);
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/profile', function (Request $request) {
+        return auth()->user();
+    });
+    Route::resource('products', ProductController::class)->only(['update', 'store', 'destroy']);
+    Route::put('products/{id}', [ProductController::class, 'update']);
+    Route::delete('products/{id}', [ProductController::class, 'destroy']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+
+
+
 
 

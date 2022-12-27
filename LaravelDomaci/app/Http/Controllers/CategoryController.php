@@ -86,13 +86,16 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category_id)
+    public function destroy( $category_id)
     {
-        $category= Category::find($category_id);
-        if(is_null($category)){
-            return response()->json('Kategorija nije pronadjena',404);
-        }
-        $category->delete();
-        return response()->json('Kategorija je obrisana');
+        // $category= Category::find($category_id);
+        // if(is_null($category)){
+        //     return response()->json('Kategorija nije pronadjena',404);
+        // }
+        // $category->delete();
+        // return response()->json('Kategorija je obrisana');
+
+        Category::destroy($category_id);
+        return response()->json('Category is deleted successfully!');
     }
 }

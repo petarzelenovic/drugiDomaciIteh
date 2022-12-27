@@ -19,6 +19,7 @@ class UserResource extends JsonResource
             'Id->'=>$this->resource->id,
             'Name->'=>$this->resource->name,
             'Email->'=>$this->resource->email,
+            // 'Password->'=>$this->resource->password, za proveru logovanja
         ];
     }
 }
