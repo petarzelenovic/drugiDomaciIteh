@@ -27,7 +27,7 @@ Route::get('/users', [UserController::class,'index']);
 Route::get('/users/{id}', [UserController::class,'show']);
 
 // Route::delete('/destroyUser/{id}', [UserController::class, 'destroy']);
-
+//ajde
 
 Route::get('/categories', [CategoryController::class,'index']);
 Route::get('/category/{category}', [CategoryController::class,'show']);
