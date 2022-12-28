@@ -34,8 +34,7 @@ Route::get('/categories', [CategoryController::class,'index']);
 Route::get('/category/{category}', [CategoryController::class,'show']);
 
 Route::get('/brands', [BrandController::class,'index']);
-// Route::get('/brands/{brand}', [BrandController::class,'show']);
-// izbacen brand show
+Route::get('/brands/{brand}', [BrandController::class,'show']);
 
 
 Route::get('/products', [ProductController::class,'index']);
