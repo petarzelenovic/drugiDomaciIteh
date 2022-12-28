@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -31,6 +32,9 @@ Route::get('/users/{id}', [UserController::class,'show']);
 
 Route::get('/categories', [CategoryController::class,'index']);
 Route::get('/category/{category}', [CategoryController::class,'show']);
+
+Route::get('/brands', [BrandController::class,'index']);
+Route::get('/brands/{brand}', [BrandController::class,'show']);
 
 
 Route::get('/products', [ProductController::class,'index']);

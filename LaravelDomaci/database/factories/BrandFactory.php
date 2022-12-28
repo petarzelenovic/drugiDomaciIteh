@@ -20,7 +20,7 @@ class BrandFactory extends Factory
     public function definition()
     {
         return [
-            'brandName'=>$this->faker->name(),
+            'name'=>$this->faker->name(),
             'slug'=>$this->faker->slug(),
             'category_id'=>Category::factory(),
         ];

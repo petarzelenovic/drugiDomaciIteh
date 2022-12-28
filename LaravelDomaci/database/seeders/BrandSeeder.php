@@ -18,27 +18,27 @@ class BrandSeeder extends Seeder
     {
         Brand::truncate();
         Brand::create([
-            'brandName'=>"Nike",
+            'name'=>"Nike",
             'slug'=>"nike",
             'category_id'=>Category::all()->random()->id,
             
  
         ]);
         Brand::create([
-         'brandName'=>"Puma",
+         'name'=>"Puma",
          'slug'=>"puma",
          'category_id'=>Category::all()->random()->id,
          
  
      ]);
      Brand::create([
-         'brandName'=>"Balenciaga",
+         'name'=>"Balenciaga",
          'slug'=>"balenciaga",
          'category_id'=>Category::all()->random()->id,
      ]);
 
      Brand::create([
-        'brandName'=>"Adidas",
+        'name'=>"Adidas",
         'slug'=>"adidas",
         'category_id'=>Category::all()->random()->id,
     ]);
