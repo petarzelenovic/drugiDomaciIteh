@@ -27,7 +27,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/users', [UserController::class,'index']);
 Route::get('/users/{id}', [UserController::class,'show']);
 
-// Route::delete('/destroyUser/{id}', [UserController::class, 'destroy']);
 
 Route::get('/categories', [CategoryController::class,'index']);
 Route::get('/category/{category}', [CategoryController::class,'show']);
@@ -35,9 +34,7 @@ Route::get('/category/{category}', [CategoryController::class,'show']);
 Route::get('/brands', [BrandController::class,'index']);
 Route::get('/brands/{brand}', [BrandController::class,'show']);
 
-
 Route::get('/products', [ProductController::class,'index']);
-
 Route::get('/productsOfBrand/{id}', [BrandProductController::class,'index']);
 
 Route::delete('/category/{id}', [CategoryController::class, 'destroy']);
